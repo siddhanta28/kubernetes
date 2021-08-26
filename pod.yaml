@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+
+metadata:
+  name: secondpod
+  namespace: test-namespace 
+  labels:
+    name: testing
+spec:
+  containers:
+  - name: testing
+    image: bitbull/webserver
+    ports:
+    - containerPort: 80    
