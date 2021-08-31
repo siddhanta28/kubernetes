@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: d-set
+  namespace: test-namespace
+  labels:
+    app: state
+spec:       
+  selector:
+    matchLabels:
+      app: state
+  template:
+    metadata:
+      labels:
+        app: state
+    spec:
+      containers:
+      - name: testing
+        image: bitbull/webserver
+        ports: 
+        - containerPort: 80
+

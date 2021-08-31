@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: full-state
+  namespace: test-namespace
+  labels:
+    app: state-full
+spec:
+  serviceName: ""       
+  replicas: 2
+  selector:
+    matchLabels:
+      app: state-full
+  template:
+    metadata:
+      labels:
+        app: state-full
+    spec:
+      containers:
+      - name: testing
+        image: bitbull/webserver
+
