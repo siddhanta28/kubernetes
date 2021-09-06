@@ -1,0 +1,18 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: test
+  namespace: test-namespace
+spec:
+  schedule: "*/1 * * * *"
+  concurrencyPolicy: Replace
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: test
+            image: perl
+            imagePullPolicy: IfNotPresent
+            command: ["/bin/sh", "-ec", "sleep 80"]
+          restartPolicy: OnFailure

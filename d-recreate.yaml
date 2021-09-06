@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dcreate-update
+  namespace: test-namespace
+  labels:
+    app: testing
+spec:
+  replicas: 3
+  strategy:
+    type: Recreate       # by default rollupdate strategy if not mentioned.
+  selector:
+    matchLabels:
+      app: testing
+  template:
+    metadata:
+      labels:
+        app: testing
+    spec:
+      containers:
+      - name: testing
+        image: jenkins:2.60.3
+
+
